@@ -89,6 +89,21 @@
     <script defer id="solutionJS">
         //Escribe aquí tu solución / escriviu aquí la vostra solució:
 
+        function validateSubmit(event){
+            const checkGPS=document.getElementById("gps");
+            const checkLS=document.getElementById("leather-seats");
+            const checkAW=document.getElementById("armored-windows");
+            const checkSR=document.getElementById("sunroof");
+            const checkTW=document.getElementById("tinted-windows");
+        
+            if(!checkGPS.checked && !checkLS.checked && !checkAW.checked && !checkSR.checked && !checkTW.checked ){
+                document.querySelector('#myContent').textContent="You must select almost one extra";
+                event.preventDefault();
+            }        
+        }
+              
+        document.querySelector("#mySubmit").addEventListener("click", validateSubmit);
+
     </script>
     <script defer id="test">
         /**
@@ -98,5 +113,6 @@
         */  
         document.querySelector('#mySubmit').dispatchEvent(new Event('click'));
         window.test = document.querySelector('#myContent').textContent;
+       
     </script>
 </html>

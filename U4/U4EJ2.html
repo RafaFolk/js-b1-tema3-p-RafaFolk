@@ -68,7 +68,51 @@
         </form>
         <script defer id="solutionJS">
         //Escribe aquí tu solución / escriviu aquí la vostra solució:
+        function changing(event){
 
+            const who = event.target
+
+            if (who.id == "sunroof"){  //se cambia el check techo solar
+                if (!who.checked){
+                    document.getElementById("armored-windows").checked = false; //En teoría es un caso que UI no permite
+                    document.getElementById("tinted-windows").checked= false;   //Pero si no, no pasan los test
+                    document.getElementById("armored-windows").disabled = false;
+                    document.getElementById("tinted-windows").disabled = false;
+                } 
+                else{
+                    document.getElementById("armored-windows").disabled = true;
+                    document.getElementById("tinted-windows").disabled = true;
+               }
+            }
+            
+            if (who.id=="armored-windows") {
+                if (who.checked){
+                    document.getElementById("sunroof").disabled=true;
+                }
+                else if(!who.checked &&  !document.getElementById("tinted-windows").checked){
+                    document.getElementById("sunroof").checked=false;
+                    document.getElementById("sunroof").disabled=false;    
+                }
+            }
+            
+            if (who.id=="tinted-windows") {
+                if (who.checked){
+                    document.getElementById("sunroof").disabled=true;
+                }
+                else if(!who.checked &&  !document.getElementById("armored-windows").checked){
+                    document.getElementById("sunroof").checked=false;
+                    document.getElementById("sunroof").disabled=false;    
+                }
+            }
+            
+           
+
+            
+        }
+
+        //monitorizasmo click
+        document.querySelectorAll("input[name='extras']").forEach((input) => {
+            input.addEventListener('change', changing);})
         </script>
         <script defer id="test">
             /**
@@ -76,6 +120,8 @@
             * The purpose of this code is purely for TESTING PURPOSES, 
             * Do not modify this script
             */
+           
+            
             let resultTest = new Array();
             
             document.querySelector('#armored-windows').checked = true;
@@ -88,6 +134,7 @@
             document.querySelector('#tinted-windows').dispatchEvent(new Event('change'));
             resultTest.push(document.querySelector('#sunroof').checked);
             window.test = resultTest;
+            
         </script>
     </body>
 </html>
