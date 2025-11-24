@@ -25,6 +25,11 @@ localStorage.setItem(
 	);
 
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
+const myTriangles=JSON.parse(localStorage.getItem("myTriangles"));  //parseamos y obtenemos lista
+const myTriangle= myTriangles[0];									//nos quedamos con el primer elemento        
+myTriangle.rightTriangle=false;                                     //lo modificamos
+sessionStorage.setItem("newTriangle", JSON.stringify(myTriangle));   //guardamos nueva clave tras "JSONear"
+
 
 /**
  * TEST

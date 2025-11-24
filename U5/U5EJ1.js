@@ -24,6 +24,9 @@ localStorage.setItem(
 	);
 
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
+const myTriangles=JSON.parse(localStorage.getItem("myTriangles"));  //parseamos y obtenemos lista
+myTriangles.pop();                                                  //eliminamos último elemento lista 
+localStorage.setItem("myTriangles", JSON.stringify(myTriangles))   //guardamos tras "JSONear"
 
 /**
  * TEST
@@ -31,6 +34,10 @@ localStorage.setItem(
  * if you run this code outside of this environment, 
  * please comment or remove the following lines
  */
+
 export function tests() {
 	return [myTriangles, localStorage.getItem("myTriangles")];
 }
+	
+
+	
