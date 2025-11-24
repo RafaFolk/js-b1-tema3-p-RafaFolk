@@ -54,7 +54,35 @@
     </body>
 	<script defer id="solutionJS">
         //Escribe aquí tu solución / escriviu aquí la vostra solució:
+		function createTitle(inText){
+			if (!(document.querySelector(".title"))){             //comprobamos la no existencia de la clase title
+				const myH1=document.createElement("H1");          //creamos elemento H1
+				myH1.textContent=inText;                          //le damos contenido
+				myH1.classList.add("title");			          //y le asignamos clase					
+				const myDiv=document.querySelector("#myContent"); // finalmente lo añadimos en el DOM
+				myDiv.appendChild(myH1);                          //en el sitio que queremos (el DIV myContent)
+			}
+		}
 		
+		function createParagraph(inText){                         //lo mismo que el anterior solo que comprobando que 
+			if (document.querySelector(".title")){                //si exista la clase
+				const myP=document.createElement("p");
+				myP.textContent=inText;
+				myP.classList.add("paragraph");
+				const myDiv=document.querySelector("#myContent");
+				myDiv.appendChild(myP);
+			}
+		}
+		
+        /* PRUEBAS para ver que todo funciona. Comentadas para que el caso de test pase
+		createTitle("TITLE");
+        createParagraph("Parrafo 1");
+		createParagraph("Parrafo 2");
+		createParagraph("Parrafo 3");
+		
+		myTitleClass=document.getElementsByClassName("paragraph");
+		myPs=myTitleClass[1].remove();
+		*/
 	</script>
     <script defer id="test">
         /**
