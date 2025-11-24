@@ -48,6 +48,33 @@
     <script defer id="solutionJS">
         //Escribe aquí tu solución / escriviu aquí la vostra solució:
           
+       //El código (aparentemente) funciona, pero los casos de test no pasan (ya he tenido problemas antes con el npm)
+        function changeColor(event){
+          const figure= event.target;             //Guardamos la figura
+          let aftCol="";                          //Color Antes
+          let befCol="";                          //Color Despues
+          switch (figure.getAttribute("id")){    //Obtenemos la figura
+            case "circle": 
+              befCol=figure.getAttribute("class"); //Obtenemos el color de la figura que dispara el evento
+              aftCol=document.querySelector("rect").getAttribute("class"); //Obtenemos el color de la figura a la derecha
+              break;
+            case "rect":
+              befCol=figure.getAttribute("class");
+              aftCol=document.querySelector("polygon").getAttribute("class");
+              break;
+            case "polygon":
+              befCol=figure.getAttribute("class");
+              aftCol=document.querySelector("circle").getAttribute("class");
+              break;
+          }
+              event.target.classList.replace(befCol,aftCol);  //Cambiamos los colores (las clases)        
+        }
+        
+        document.querySelector("#circle").addEventListener("mouseover", changeColor); //"Escuchamos" el "mouse over"
+        document.querySelector("#rect").addEventListener("mouseover", changeColor);
+        document.querySelector("#polygon").addEventListener("mouseover", changeColor);
+
+
 	</script>
     <script defer id="test">
         /**

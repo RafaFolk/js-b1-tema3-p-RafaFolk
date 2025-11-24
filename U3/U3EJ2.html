@@ -78,7 +78,26 @@
     </body>
     <script defer id="solutionJS">
         //Escribe aquí tu solución / escriviu aquí la vostra solució:
-        
+        /*        
+        function showClass(event){
+            const colSquare= event.target;                     //Objeto que dispara el evento
+            const squareClass=colSquare.getAttribute("class"); //clase del objeto
+            colSquare.textContent=squareClass;                 //cambiando una de sus atributos
+            //Parece que le vamos pillando el punto :)
+        }
+
+        document.querySelector(".red").addEventListener("click", showClass); 
+        document.querySelector(".green").addEventListener("click", showClass); 
+        document.querySelector(".orange").addEventListener("click", showClass); 
+*/
+        //Despues de tener el código hecho, revisando la teoría, se nos ha ocurrido usar funcion arrow
+        //El código (aparentemente) funciona, pero los casos de test no pasan (ya he tenido problemas antes con el npm)
+        document.querySelector(".red").addEventListener("click", event=>event.target.textContent=event.target.getAttribute("class") ); //"Escuchamos" el "click".
+        document.querySelector(".green").addEventListener("click", event=>event.target.textContent=event.target.getAttribute("class") ); //"Escuchamos" el "click".
+        document.querySelector(".orange").addEventListener("click", event=>event.target.textContent=event.target.getAttribute("class") ); //"Escuchamos" el "click".
+
+
+
     </script>
     <script defer id="test">
         /**
